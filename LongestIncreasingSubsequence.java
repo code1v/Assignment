@@ -1,26 +1,32 @@
 import java.util.*;
 public class LongestIncreasingSubsequence {
-    public static int lengthOfLIS(int[] nums , int n) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        
-        int[] dp = new int[n];
-        Arrays.fill(dp, 1);
-        int maxLength = 1;
+    public static int lengthOfLIS(int[] nums, int n){
+        int[] arr=new int[n];
+        int count=0;
 
-        for (int i = 1; i < n; i++) {
-            for (int j = 0; j < i; j++) {
-                if (nums[i] > nums[j]) {
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
+        for(int i : nums){
+            int start=0;
+            int end = count;
+
+            while(start<end){
+                int mid=(start+end)/2;
+                if(arr[mid]<i){
+                    start=mid+1;
+                }else{
+                    end=mid;
                 }
             }
-            maxLength = Math.max(maxLength, dp[i]);
+
+            arr[start]=i;
+            if(start==count){
+                count++;
+            }
         }
 
-        return maxLength;
+        return count;
     }
 
+    
     public static void main(String args[]) {
         Scanner sc=new Scanner(System.in);
         System.out.print("Enter size of array: ");
