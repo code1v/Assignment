@@ -33,7 +33,7 @@ public class IntegerToWords {
         return numberToWords(num/1000000000) + " Billion" + (num%1000000000!=0 ? " "+ numberToWords(num%1000000000):"");
     }
 
-    public static void main(String[] args) {
+    public static void main(String args[]) {
         Scanner sc=new Scanner(System.in);
         System.out.print("Enter a number: ");
         int num=sc.nextInt();
